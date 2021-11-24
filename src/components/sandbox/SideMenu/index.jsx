@@ -1,79 +1,84 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
-import { UserOutlined } from '@ant-design/icons'
+import axios from 'axios'
+import { HomeOutlined, UserOutlined, KeyOutlined, FileTextOutlined, FileSearchOutlined, FileDoneOutlined } from '@ant-design/icons'
 import './index.css'
 
 const { Sider } = Layout
 const { SubMenu } = Menu
-const menuList = [
-  {
-    key: '/home',
-    title: 'Home',
-    icon: <UserOutlined />
-  },
-  {
-    key: '/user-manage',
-    title: 'User Management',
-    icon: <UserOutlined />,
-    children: [
-      {
-        key: '/user-manage/list',
-        title: 'User List',
-        icon: <UserOutlined />
-      }
-    ]
-  },
-  {
-    key: '/right-manage',
-    title: 'Managing Auth',
-    icon: <UserOutlined />,
-    children: [
-      {
-        key: '/right-manage/role/list',
-        title: 'Role List',
-        icon: <UserOutlined />
-      },
-      {
-        key: '/right-manage/right/list',
-        title: 'Authority List',
-        icon: <UserOutlined />
-      }
-    ]
-  }
-]
+const iconList = {
+  '/home': <HomeOutlined />,
+  '/user-manage': <UserOutlined />,
+  '/right-manage': <KeyOutlined />,
+  '/news-manage': <FileTextOutlined />,
+  '/audit-manage': <FileSearchOutlined />,
+  '/publish-manage': <FileDoneOutlined />
+}
 
 function SideMenu(props) {
+  const [menu, setMenu] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:8000/rights?_embed=children').then((res) => {
+      setMenu(res.data)
+    })
+    return () => {}
+  }, [])
+
+  function checkPagePermission(item) {
+    return item.pagePermission
+  }
+
   function renderMenu(menuList) {
     return menuList.map((item) => {
-      if (item.children) {
+      // 判斷子層級有否及權限
+      if (item.children?.length > 0 && checkPagePermission(item)) {
         return (
-          <SubMenu key={item.key} icon={item.icon} title={item.title}>
+          <SubMenu
+            key={item.key}
+            icon={iconList[item.key]}
+            title={item.title}
+          >
             {renderMenu(item.children)}
           </SubMenu>
         )
       }
 
       return (
-        <Menu.Item
-          key={item.key}
-          icon={item.icon}
-          onClick={() => {
-            props.history.push(item.key)
-          }}
-        >
-          {item.title}
-        </Menu.Item>
+        checkPagePermission(item) && (
+          <Menu.Item
+            key={item.key}
+            icon={iconList[item.key]}
+            onClick={() => {
+              props.history.push(item.key)
+            }}
+          >
+            {item.title}
+          </Menu.Item>
+        )
       )
     })
   }
 
+  const selectKeys = [props.location.pathname]
+  const openKeys = ['/' + props.location.pathname.split('/')[1]]
+
   return (
     <Sider trigger={null} collapsible collapsed={false}>
-      <div className="logo">News Publishing Platform</div>
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-        {renderMenu(menuList)}
-      </Menu>
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div className="logo">News Publishing Platform</div>
+        <div style={{ flex: '1', overflow: 'auto' }}>
+          <Menu
+            theme="dark"
+            mode="inline"
+            selectedKeys={selectKeys}
+            defaultOpenKeys={openKeys}
+          >
+            {renderMenu(menu)}
+          </Menu>
+        </div>
+      </div>
     </Sider>
   )
 }
