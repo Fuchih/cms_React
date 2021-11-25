@@ -23,11 +23,10 @@ function SideMenu(props) {
     axios.get('http://localhost:8000/rights?_embed=children').then((res) => {
       setMenu(res.data)
     })
-    return () => {}
   }, [])
 
   function checkPagePermission(item) {
-    return item.pagePermission
+    return item.pagePermission === 1
   }
 
   function renderMenu(menuList) {

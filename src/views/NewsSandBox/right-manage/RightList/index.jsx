@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Table, Tag, Button, Modal } from 'antd'
-import axios from 'axios'
+import { Table, Tag, Button, Modal, Popover, Switch } from 'antd'
 import { DeleteOutlined, EditOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
+import axios from 'axios'
 
 const { confirm } = Modal
 
@@ -44,12 +44,27 @@ export default function RightList() {
     }
   }
 
+  function switchMethod(item) {
+    item.pagePermission = item.pagePermission === 1 ? 0 : 1
+    setDataSource([...dataSource])
+
+    if(item.grade === 1) {
+      axios.patch(`http://localhost:8000/rights/${item.id}`, {
+        pagePermission: item.pagePermission
+      })
+    } else {
+      axios.patch(`http://localhost:8000/children/${item.id}`, {
+        pagePermission: item.pagePermission
+      })
+    }
+  }
+
   const columns = [
     {
       title: 'ID',
       dataIndex: 'id',
       render: (id) => {
-        return <b style={{ color: 'darkred' }}>{id}</b>
+        return <b style={{ color: 'darkslateblue' }}>{id}</b>
       }
     },
     {
@@ -74,11 +89,26 @@ export default function RightList() {
               onClick={() => showConfirm(item)}
             />
             &nbsp;
-            <Button
-              type="primary"
-              shape="circle"
-              icon={<EditOutlined />}
-            />
+            <Popover
+              content={
+                <div style={{textAlign:'center'}}>
+                  <Switch
+                    checked={item.pagePermission}
+                    onChange={() => switchMethod(item)}
+                  >
+                  </Switch>
+                </div>
+              }
+              title="Setting"
+              trigger={item.pagePermission === undefined ? '' : 'click'}
+            >
+              <Button
+                type="primary"
+                shape="circle"
+                icon={<EditOutlined />}
+                disabled={item.pagePermission === undefined}
+              />
+            </Popover>
           </>
         )
       }
