@@ -1,0 +1,404 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": 123456,
+      "roleState": true,
+      "default": true,
+      "region": "",
+      "roleId": 1
+    },
+    {
+      "id": 2,
+      "username": "Jin",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "Asia",
+      "roleId": 2
+    },
+    {
+      "id": 3,
+      "username": "Tom",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "European",
+      "roleId": 2
+    },
+    {
+      "id": 4,
+      "username": "Mary",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "",
+      "roleId": 1
+    },
+    {
+      "id": 5,
+      "username": "Morrison",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "Oceania",
+      "roleId": 3
+    },
+    {
+      "id": 6,
+      "username": "Liz",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "Africa",
+      "roleId": 3
+    },
+    {
+      "id": 7,
+      "username": "Ivy",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "North America",
+      "roleId": 3
+    },
+    {
+      "id": 8,
+      "username": "Karen",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "Antarctica",
+      "roleId": 3
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "roleName": "Administrator",
+      "roleType": 1,
+      "rights": [
+        "/user-manage",
+        "/user-manage/add",
+        "/user-manage/delete",
+        "/user-manage/update",
+        "/user-manage/list",
+        "/right-manage",
+        "/right-manage/role/list",
+        "/right-manage/right/list",
+        "/right-manage/role/update",
+        "/right-manage/role/delete",
+        "/right-manage/right/update",
+        "/right-manage/right/delete",
+        "/news-manage",
+        "/news-manage/list",
+        "/news-manage/add",
+        "/news-manage/update/:id",
+        "/news-manage/preview/:id",
+        "/news-manage/draft",
+        "/news-manage/category",
+        "/audit-manage",
+        "/audit-manage/audit",
+        "/audit-manage/list",
+        "/publish-manage",
+        "/publish-manage/unpublished",
+        "/publish-manage/published",
+        "/publish-manage/offline",
+        "/home"
+      ]
+    },
+    {
+      "id": 2,
+      "roleName": "Editor",
+      "roleType": 2,
+      "rights": [
+        "/home",
+        "/user-manage",
+        "/user-manage/add",
+        "/user-manage/delete",
+        "/user-manage/update",
+        "/user-manage/list",
+        "/news-manage",
+        "/news-manage/list",
+        "/news-manage/add",
+        "/news-manage/update/:id",
+        "/news-manage/preview/:id",
+        "/news-manage/draft",
+        "/news-manage/category",
+        "/audit-manage",
+        "/audit-manage/audit",
+        "/audit-manage/list",
+        "/publish-manage",
+        "/publish-manage/unpublished",
+        "/publish-manage/published",
+        "/publish-manage/offline"
+      ]
+    },
+    {
+      "id": 3,
+      "roleName": "Subeditor",
+      "roleType": 3,
+      "rights": [
+        "/home",
+        "/news-manage",
+        "/news-manage/list",
+        "/news-manage/add",
+        "/news-manage/update/:id",
+        "/news-manage/preview/:id",
+        "/news-manage/draft",
+        "/audit-manage",
+        "/audit-manage/list",
+        "/publish-manage",
+        "/publish-manage/unpublished",
+        "/publish-manage/published",
+        "/publish-manage/offline"
+      ]
+    }
+  ],
+  "children": [
+    {
+      "id": 3,
+      "title": "Add Users",
+      "rightId": 2,
+      "key": "/user-manage/add",
+      "grade": 2
+    },
+    {
+      "id": 4,
+      "title": "Delete Users",
+      "rightId": 2,
+      "key": "/user-manage/delete",
+      "grade": 2
+    },
+    {
+      "id": 5,
+      "title": "Update Users",
+      "rightId": 2,
+      "key": "/user-manage/update",
+      "grade": 2
+    },
+    {
+      "id": 6,
+      "title": "User List",
+      "rightId": 2,
+      "key": "/user-manage/list",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 8,
+      "title": "Role List",
+      "rightId": 7,
+      "key": "/right-manage/role/list",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 9,
+      "title": "Auth List",
+      "rightId": 7,
+      "key": "/right-manage/right/list",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 10,
+      "title": "Update Role",
+      "rightId": 7,
+      "key": "/right-manage/role/update",
+      "grade": 2
+    },
+    {
+      "id": 11,
+      "title": "Delete Role",
+      "rightId": 7,
+      "key": "/right-manage/role/delete",
+      "grade": 2
+    },
+    {
+      "id": 12,
+      "title": "Update Auth",
+      "rightId": 7,
+      "key": "/right-manage/right/update",
+      "grade": 2
+    },
+    {
+      "id": 13,
+      "title": "Delete Auth",
+      "rightId": 7,
+      "key": "/right-manage/right/delete",
+      "grade": 2
+    },
+    {
+      "id": 15,
+      "title": "News List",
+      "rightId": 14,
+      "key": "/news-manage/list",
+      "grade": 2
+    },
+    {
+      "id": 16,
+      "title": "Write News",
+      "rightId": 14,
+      "key": "/news-manage/add",
+      "pagePermission": 1,
+      "grade": 2
+    },
+    {
+      "id": 17,
+      "title": "Update News",
+      "rightId": 14,
+      "key": "/news-manage/update/:id",
+      "grade": 2,
+      "routePermission": 1
+    },
+    {
+      "id": 18,
+      "title": "News Preview",
+      "rightId": 14,
+      "key": "/news-manage/preview/:id",
+      "grade": 2,
+      "routePermission": 1
+    },
+    {
+      "id": 19,
+      "title": "Draft Box",
+      "rightId": 14,
+      "key": "/news-manage/draft",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 20,
+      "title": "News Categories",
+      "rightId": 14,
+      "key": "/news-manage/category",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 22,
+      "title": "Censorship",
+      "rightId": 21,
+      "key": "/audit-manage/audit",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 23,
+      "title": "Censorship List",
+      "rightId": 21,
+      "key": "/audit-manage/list",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 25,
+      "title": "Unpublished",
+      "rightId": 24,
+      "key": "/publish-manage/unpublished",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 26,
+      "title": "Published",
+      "rightId": 24,
+      "key": "/publish-manage/published",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 27,
+      "title": "Offline",
+      "rightId": 24,
+      "key": "/publish-manage/offline",
+      "grade": 2,
+      "pagePermission": 1
+    }
+  ],
+  "rights": [
+    {
+      "id": 1,
+      "title": "Home",
+      "key": "/home",
+      "pagePermission": 1,
+      "grade": 1
+    },
+    {
+      "id": 2,
+      "title": "User",
+      "key": "/user-manage",
+      "pagePermission": 1,
+      "grade": 1
+    },
+    {
+      "id": 7,
+      "title": "Authority",
+      "key": "/right-manage",
+      "pagePermission": 1,
+      "grade": 1
+    },
+    {
+      "id": 14,
+      "title": "News",
+      "key": "/news-manage",
+      "pagePermission": 1,
+      "grade": 1
+    },
+    {
+      "id": 21,
+      "title": "Audit",
+      "key": "/audit-manage",
+      "pagePermission": 1,
+      "grade": 1
+    },
+    {
+      "id": 24,
+      "title": "Publishing",
+      "key": "/publish-manage",
+      "pagePermission": 1,
+      "grade": 1
+    }
+  ],
+  "categories": [],
+  "regions": [
+    {
+      "id":1,
+      "title":"Asia",
+      "value":"Asia"
+    },
+    {
+      "id":2,
+      "title":"European",
+      "value":"European"
+    },
+    {
+      "id":3,
+      "title":"North America",
+      "value":"North America"
+    },
+    {
+      "id":4,
+      "title":"South America",
+      "value":"South America"
+    },
+    {
+      "id":5,
+      "title":"Africa",
+      "value":"Africa"
+    },
+    {
+      "id":6,
+      "title":"Oceania",
+      "value":"Oceania"
+    },
+    {
+      "id":7,
+      "title":"Antarctica",
+      "value":"Antarctica"
+    }
+  ],
+  "news": []
+}
