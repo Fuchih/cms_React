@@ -1,5 +1,78 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": 123456,
+      "roleState": true,
+      "default": true,
+      "region": "",
+      "roleId": 1
+    },
+    {
+      "id": 2,
+      "username": "Jin",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "Asia",
+      "roleId": 2
+    },
+    {
+      "id": 3,
+      "username": "Tom",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "European",
+      "roleId": 2
+    },
+    {
+      "id": 4,
+      "username": "Mary",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "",
+      "roleId": 1
+    },
+    {
+      "id": 5,
+      "username": "Morrison",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "Oceania",
+      "roleId": 3
+    },
+    {
+      "id": 6,
+      "username": "Liz",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "Africa",
+      "roleId": 3
+    },
+    {
+      "id": 7,
+      "username": "Ivy",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "North America",
+      "roleId": 3
+    },
+    {
+      "id": 8,
+      "username": "Karen",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "Antarctica",
+      "roleId": 3
+    }
+  ],
   "roles": [
     {
       "id": 1,
@@ -257,7 +330,7 @@
       "id": 2,
       "title": "User",
       "key": "/user-manage",
-      "pagePermission": 0,
+      "pagePermission": 1,
       "grade": 1
     },
     {
@@ -290,6 +363,42 @@
     }
   ],
   "categories": [],
-  "regions": [],
+  "regions": [
+    {
+      "id": 1,
+      "title": "Asia",
+      "value": "Asia"
+    },
+    {
+      "id": 2,
+      "title": "European",
+      "value": "European"
+    },
+    {
+      "id": 3,
+      "title": "North America",
+      "value": "North America"
+    },
+    {
+      "id": 4,
+      "title": "South America",
+      "value": "South America"
+    },
+    {
+      "id": 5,
+      "title": "Africa",
+      "value": "Africa"
+    },
+    {
+      "id": 6,
+      "title": "Oceania",
+      "value": "Oceania"
+    },
+    {
+      "id": 7,
+      "title": "Antarctica",
+      "value": "Antarctica"
+    }
+  ],
   "news": []
 }
