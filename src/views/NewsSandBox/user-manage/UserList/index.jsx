@@ -9,9 +9,13 @@ const { confirm } = Modal
 export default function UserList() {
   const [dataSource, setDataSource] = useState([])
   const [isAddUserVisible, setAddUserVisible] = useState(false)
+  const [isUpdateVisible, setUpdateVisible] = useState(false)
+  const [isUpdateDisabled, setUpdateDisabled] = useState(false)
   const [roleList, setRoleList] = useState([])
   const [regionList, setRegion] = useState([])
+  const [current, setCurrent] = useState(null)
   const addForm = useRef(null)
+  const updateForm = useRef(null)
 
   useEffect(() => {
     axios.get('http://localhost:8000/users?_expand=role').then((res) => {
@@ -34,6 +38,14 @@ export default function UserList() {
     })
   }, [])
 
+  function handleChange(item) {
+    item.roleState = !item.roleState
+    setDataSource([...dataSource])
+    axios.patch(`http://localhost:8000/users/${item.id}`, {
+      roleState: item.roleState
+    })
+  }
+
   function showConfirm(item) {
     confirm({
       title: 'Do you Want to delete this item?',
@@ -47,8 +59,20 @@ export default function UserList() {
     })
   }
 
+  function handleUpdate(item) {
+    //非同步更新數據才能成功創建Modal
+    setTimeout(() => {
+      setUpdateVisible(true)
+      if (item.roleId === 1) setUpdateDisabled(true)
+      else setUpdateDisabled(false)
+      updateForm.current.setFieldsValue(item)
+    }, 0)
+
+    setCurrent(item)
+  }
+
   function deleteMethod(item) {
-    setDataSource(dataSource.filter(data => data.id !== item.id))
+    setDataSource(dataSource.filter((data) => data.id !== item.id))
     axios.delete(`http://localhost:8000/users/${item.id}`)
   }
 
@@ -56,6 +80,19 @@ export default function UserList() {
     {
       title: 'Region',
       dataIndex: 'region',
+      filters: [
+        {
+          text: 'Global',
+          value: 'Global'
+        },
+        ...regionList.map((item) => ({
+          text: item.title,
+          value: item.value
+        }))
+      ],
+
+      onFilter: (value, item) => (value === 'Global' ? item.region === '' : item.region === value),
+
       render: (region) => {
         return <b style={{ color: 'darkslateblue' }}>{region === '' ? 'Global' : region}</b>
       }
@@ -75,7 +112,7 @@ export default function UserList() {
       title: 'Status',
       dataIndex: 'roleState',
       render: (roleState, item) => {
-        return <Switch checked={roleState} disabled={item.default}></Switch>
+        return <Switch checked={roleState} disabled={item.default} onChange={() => handleChange(item)}></Switch>
       }
     },
     {
@@ -85,7 +122,7 @@ export default function UserList() {
           <>
             <Button danger shape="circle" icon={<DeleteOutlined />} onClick={() => showConfirm(item)} disabled={item.default} />
             &nbsp;
-            <Button type="primary" shape="circle" icon={<EditOutlined />} disabled={item.default} />
+            <Button type="primary" shape="circle" icon={<EditOutlined />} disabled={item.default} onClick={() => handleUpdate(item)} />
           </>
         )
       }
@@ -105,15 +142,39 @@ export default function UserList() {
             default: false
           })
           .then((res) => {
-            setDataSource([...dataSource, {
-              ...res.data,
-              role:roleList.filter(item => item.id === value.roleId)[0]
-            }])
+            setDataSource([
+              ...dataSource,
+              {
+                ...res.data,
+                role: roleList.filter((item) => item.id === value.roleId)[0]
+              }
+            ])
           })
       })
       .catch((err) => {
         console.log(err)
       })
+  }
+
+  function updateFormOK() {
+    updateForm.current.validateFields().then((value) => {
+      setUpdateVisible(false)
+      setDataSource(
+        dataSource.map((item) => {
+          if (item.id === current.id) {
+            return {
+              ...item,
+              ...value,
+              role: roleList.filter((data) => data.id === value.roleId)[0]
+            }
+          }
+          return item
+        })
+      )
+      setUpdateDisabled(!isUpdateDisabled) // 避免重新選擇Role為Administrator後未確認更新, 造成下次開啟更新使用者時Role欄被禁用
+
+      axios.patch(`http://localhost:8000/users/${current.id}`, value)
+    })
   }
 
   return (
@@ -134,6 +195,20 @@ export default function UserList() {
         onOk={() => addFormOK()}
       >
         <UserForm roleList={roleList} regionList={regionList} ref={addForm} />
+      </Modal>
+
+      <Modal
+        visible={isUpdateVisible}
+        title="Update Information"
+        okText="Confirm"
+        cancelText="Cancel"
+        onCancel={() => {
+          setUpdateVisible(false)
+          setUpdateDisabled(!isUpdateDisabled) // 避免重新選擇Role為Administrator後未確認更新, 造成下次開啟更新使用者時Role欄被禁用
+        }}
+        onOk={() => updateFormOK()}
+      >
+        <UserForm roleList={roleList} regionList={regionList} ref={updateForm} isUpdateDisabled={isUpdateDisabled} />
       </Modal>
     </>
   )

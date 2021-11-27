@@ -1,11 +1,16 @@
-import { forwardRef, useState } from 'react'
+import { forwardRef, useState, useEffect } from 'react'
 import { Form, Input, Select } from 'antd'
 
 const { Option } = Select
 
 const UserForm = forwardRef((props, ref) => {
-  const { roleList, regionList } = props
+  const { roleList, regionList, isUpdateDisabled } = props
   const [isDisabled, setDisabled] = useState(false)
+
+  //更新使用者資訊時若為Administrator禁用Region欄
+  useEffect(() => {
+    setDisabled(isUpdateDisabled)
+  }, [isUpdateDisabled])
 
   return (
     <div>
