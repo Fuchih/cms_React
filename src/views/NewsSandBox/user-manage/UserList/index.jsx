@@ -47,7 +47,10 @@ export default function UserList() {
     })
   }
 
-  function deleteMethod(item) {}
+  function deleteMethod(item) {
+    setDataSource(dataSource.filter(data => data.id !== item.id))
+    axios.delete(`http://localhost:8000/users/${item.id}`)
+  }
 
   const columns = [
     {
@@ -94,6 +97,7 @@ export default function UserList() {
       .validateFields()
       .then((value) => {
         setAddUserVisible(false)
+        addForm.current.resetFields()
         axios
           .post(`http://localhost:8000/users`, {
             ...value,
@@ -101,7 +105,10 @@ export default function UserList() {
             default: false
           })
           .then((res) => {
-            setDataSource([...dataSource, res.data])
+            setDataSource([...dataSource, {
+              ...res.data,
+              role:roleList.filter(item => item.id === value.roleId)[0]
+            }])
           })
       })
       .catch((err) => {
