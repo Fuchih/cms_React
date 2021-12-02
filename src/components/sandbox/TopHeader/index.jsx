@@ -1,20 +1,30 @@
 import { useState } from 'react'
 import { Layout, Menu, Dropdown, Avatar } from 'antd'
 import { MenuUnfoldOutlined, MenuFoldOutlined, UserOutlined } from '@ant-design/icons'
+import { withRouter } from 'react-router'
 
 const { Header } = Layout
 
-export default function TopHeader() {
+function TopHeader(props) {
   const [collapsed, setCollapsed] = useState(false)
 
   function changeCollapsed() {
     setCollapsed(!collapsed)
   }
 
+  const { role:{ roleName }, username } = JSON.parse(localStorage.getItem('token'))
+
   const menu = (
     <Menu>
-      <Menu.Item>Admin</Menu.Item>
-      <Menu.Item danger>Sign out</Menu.Item>
+      <Menu.Item>{roleName}</Menu.Item>
+      <Menu.Item
+        danger onClick={()=>{
+          localStorage.removeItem('token')
+          props.history.replace('/login')
+        }}
+      >
+        Sign out
+      </Menu.Item>
     </Menu>
 )
 
@@ -24,7 +34,7 @@ export default function TopHeader() {
         collapsed ? <MenuUnfoldOutlined onClick={changeCollapsed}/> : <MenuFoldOutlined onClick={changeCollapsed}/>
       }
       <div style={{float:'right'}}>
-        <span>Welcome back Admin</span>
+        <span style={{paddingRight:'10px'}}>Welcome back {username}</span>
         <Dropdown overlay={menu}>
           <Avatar shape="square" size="large" icon={<UserOutlined />} />
         </Dropdown>
@@ -32,3 +42,5 @@ export default function TopHeader() {
     </Header>
   )
 }
+
+export default withRouter(TopHeader)

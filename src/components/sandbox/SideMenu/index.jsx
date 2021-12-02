@@ -25,8 +25,10 @@ function SideMenu(props) {
     })
   }, [])
 
+  const { role:{ rights } } = JSON.parse(localStorage.getItem('token'))
+
   function checkPagePermission(item) {
-    return item.pagePermission === 1
+    return item.pagePermission === 1 && rights.includes(item.key)
   }
 
   function renderMenu(menuList) {
