@@ -16,7 +16,7 @@ function TopHeader(props) {
 
   const menu = (
     <Menu>
-      <Menu.Item>{roleName}</Menu.Item>
+      <Menu.Item key={username}>{roleName}</Menu.Item>
       <Menu.Item
         danger onClick={()=>{
           localStorage.removeItem('token')

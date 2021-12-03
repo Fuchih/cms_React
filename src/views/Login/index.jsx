@@ -1,5 +1,5 @@
 import { withRouter } from 'react-router'
-import { Form, Input, Button, Checkbox, message } from 'antd'
+import { Form, Input, Button, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import Particles from "react-tsparticles"
 import axios from 'axios'
@@ -86,15 +86,7 @@ import './index.scss'
               placeholder="Password"
             />
           </Form.Item>
-          <Form.Item>
-            <Form.Item
-              name="remember"
-              valuePropName="checked"
-              noStyle
-            >
-            </Form.Item>
-          </Form.Item>
-
+          
           <Form.Item>
             <Button
               type="primary"
