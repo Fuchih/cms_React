@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Home from '../../../views/NewsSandBox/Home'
 import UserList from '../../../views/NewsSandBox/user-manage/UserList'
@@ -13,31 +13,28 @@ import AuditList from '../../../views/NewsSandBox/audit-manage/AuditList'
 import Unpublished from '../../../views/NewsSandBox/publish-manage/Unpublished'
 import Published from '../../../views/NewsSandBox/publish-manage/Published'
 import Offline from '../../../views/NewsSandBox/publish-manage/Offline'
-import axios from 'axios';
+import axios from 'axios'
 
 const LocalRouterMap = {
-  "/home": Home,
-  "/user-manage/list": UserList,
-  "/right-manage/role/list": RoleList,
-  "/right-manage/right/list": RightList,
-  "/news-manage/add": NewsAdd,
-  "/news-manage/draft": NewsDraft,
-  "/news-manage/category": NewsCategory,
-  "/audit-manage/audit": Audit,
-  "/audit-manage/list": AuditList,
-  "/publish-manage/unpublished": Unpublished,
-  "/publish-manage/published": Published,
-  "/publish-manage/offline": Offline,
+  '/home': Home,
+  '/user-manage/list': UserList,
+  '/right-manage/role/list': RoleList,
+  '/right-manage/right/list': RightList,
+  '/news-manage/add': NewsAdd,
+  '/news-manage/draft': NewsDraft,
+  '/news-manage/category': NewsCategory,
+  '/audit-manage/audit': Audit,
+  '/audit-manage/list': AuditList,
+  '/publish-manage/unpublished': Unpublished,
+  '/publish-manage/published': Published,
+  '/publish-manage/offline': Offline
 }
 
 export default function NewsRouter() {
-  const [backRouteList, setBackRouteList] = useState([]);
+  const [backRouteList, setBackRouteList] = useState([])
 
   useEffect(() => {
-    Promise.all([
-      axios.get(`http://localhost:8000/rights`),
-      axios.get(`http://localhost:8000/children`),
-    ]).then(res => {
+    Promise.all([axios.get(`/rights`), axios.get(`/children`)]).then((res) => {
       setBackRouteList([...res[0].data, ...res[1].data])
     })
   }, [])
@@ -47,24 +44,22 @@ export default function NewsRouter() {
   }
 
   function checkUserPermission(item) {
-    const { role:{ rights } } = JSON.parse(localStorage.getItem('token'))
+    const {
+      role: { rights }
+    } = JSON.parse(localStorage.getItem('token'))
     return rights.includes(item.key)
   }
 
   return (
     <Switch>
-      {
-        backRouteList.map(item => {
-          if (checkRoute(item) && checkUserPermission(item)) {
-            return <Route path={item.key} key={item.key} component={LocalRouterMap[item.key]} exact />
-          }
-          return null
-        })
-      }
+      {backRouteList.map((item) => {
+        if (checkRoute(item) && checkUserPermission(item)) {
+          return <Route path={item.key} key={item.key} component={LocalRouterMap[item.key]} exact />
+        }
+        return null
+      })}
       <Redirect from="/" to="/home" exact />
-      {
-        backRouteList.length > 0 && <Route path="*" component={NoPermission} />
-      }
+      {backRouteList.length > 0 && <Route path="*" component={NoPermission} />}
     </Switch>
   )
 }

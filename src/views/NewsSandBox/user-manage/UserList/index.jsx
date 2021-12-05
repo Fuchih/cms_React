@@ -26,7 +26,7 @@ export default function UserList() {
       3: 'subeditor'
     }
 
-    axios.get('http://localhost:8000/users?_expand=role').then((res) => {
+    axios.get('/users?_expand=role').then((res) => {
       const list = res.data
       setDataSource(
         roleDescription[roleId] === 'admin'
@@ -37,14 +37,14 @@ export default function UserList() {
   }, [username, roleId, region])
 
   useEffect(() => {
-    axios.get('http://localhost:8000/regions').then((res) => {
+    axios.get('/regions').then((res) => {
       const list = res.data
       setRegion(list)
     })
   }, [])
 
   useEffect(() => {
-    axios.get('http://localhost:8000/roles').then((res) => {
+    axios.get('/roles').then((res) => {
       const list = res.data
       setRoleList(list)
     })
@@ -53,7 +53,7 @@ export default function UserList() {
   function handleChange(item) {
     item.roleState = !item.roleState
     setDataSource([...dataSource])
-    axios.patch(`http://localhost:8000/users/${item.id}`, {
+    axios.patch(`/users/${item.id}`, {
       roleState: item.roleState
     })
   }
@@ -85,7 +85,7 @@ export default function UserList() {
 
   function deleteMethod(item) {
     setDataSource(dataSource.filter((data) => data.id !== item.id))
-    axios.delete(`http://localhost:8000/users/${item.id}`)
+    axios.delete(`/users/${item.id}`)
   }
 
   const columns = [
@@ -148,7 +148,7 @@ export default function UserList() {
         setAddUserVisible(false)
         addForm.current.resetFields()
         axios
-          .post(`http://localhost:8000/users`, {
+          .post(`/users`, {
             ...value,
             roleState: true,
             default: false
@@ -185,7 +185,7 @@ export default function UserList() {
       )
       setUpdateDisabled(!isUpdateDisabled) // 避免重新選擇Role為Administrator後未確認更新, 造成下次開啟更新使用者時Role欄被禁用
 
-      axios.patch(`http://localhost:8000/users/${current.id}`, value)
+      axios.patch(`/users/${current.id}`, value)
     })
   }
 

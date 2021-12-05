@@ -20,12 +20,14 @@ function SideMenu(props) {
   const [menu, setMenu] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:8000/rights?_embed=children').then((res) => {
+    axios.get('/rights?_embed=children').then((res) => {
       setMenu(res.data)
     })
   }, [])
 
-  const { role:{ rights } } = JSON.parse(localStorage.getItem('token'))
+  const {
+    role: { rights }
+  } = JSON.parse(localStorage.getItem('token'))
 
   function checkPagePermission(item) {
     return item.pagePermission === 1 && rights.includes(item.key)
@@ -36,11 +38,7 @@ function SideMenu(props) {
       // 判斷子層級有否及權限
       if (item.children?.length > 0 && checkPagePermission(item)) {
         return (
-          <SubMenu
-            key={item.key}
-            icon={iconList[item.key]}
-            title={item.title}
-          >
+          <SubMenu key={item.key} icon={iconList[item.key]} title={item.title}>
             {renderMenu(item.children)}
           </SubMenu>
         )
@@ -70,12 +68,7 @@ function SideMenu(props) {
       <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
         <div className="logo">News Publishing Platform</div>
         <div style={{ flex: '1', overflow: 'auto' }}>
-          <Menu
-            theme="dark"
-            mode="inline"
-            selectedKeys={selectKeys}
-            defaultOpenKeys={openKeys}
-          >
+          <Menu theme="dark" mode="inline" selectedKeys={selectKeys} defaultOpenKeys={openKeys}>
             {renderMenu(menu)}
           </Menu>
         </div>
