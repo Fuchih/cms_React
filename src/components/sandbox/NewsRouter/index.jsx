@@ -8,8 +8,8 @@ import NoPermission from '../../../views/NewsSandBox/NoPermission'
 import NewsAdd from '../../../views/NewsSandBox/news-manage/NewsAdd'
 import NewsDraft from '../../../views/NewsSandBox/news-manage/NewsDraft'
 import NewsCategory from '../../../views/NewsSandBox/news-manage/NewsCategory'
-import Audit from '../../../views/NewsSandBox/audit-manage/Audit'
-import AuditList from '../../../views/NewsSandBox/audit-manage/AuditList'
+import Review from '../../../views/NewsSandBox/review-manage/Review'
+import ReviewList from '../../../views/NewsSandBox/review-manage/ReviewList'
 import Unpublished from '../../../views/NewsSandBox/publish-manage/Unpublished'
 import Published from '../../../views/NewsSandBox/publish-manage/Published'
 import Offline from '../../../views/NewsSandBox/publish-manage/Offline'
@@ -23,8 +23,8 @@ const LocalRouterMap = {
   '/news-manage/add': NewsAdd,
   '/news-manage/draft': NewsDraft,
   '/news-manage/category': NewsCategory,
-  '/audit-manage/audit': Audit,
-  '/audit-manage/list': AuditList,
+  '/review-manage/review': Review,
+  '/review-manage/list': ReviewList,
   '/publish-manage/unpublished': Unpublished,
   '/publish-manage/published': Published,
   '/publish-manage/offline': Offline

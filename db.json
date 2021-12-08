@@ -107,9 +107,9 @@
         "/news-manage/preview/:id",
         "/news-manage/draft",
         "/news-manage/category",
-        "/audit-manage",
-        "/audit-manage/audit",
-        "/audit-manage/list",
+        "/review-manage",
+        "/review-manage/review",
+        "/review-manage/list",
         "/publish-manage",
         "/publish-manage/unpublished",
         "/publish-manage/published",
@@ -135,9 +135,9 @@
         "/news-manage/preview/:id",
         "/news-manage/draft",
         "/news-manage/category",
-        "/audit-manage",
-        "/audit-manage/audit",
-        "/audit-manage/list",
+        "/review-manage",
+        "/review-manage/review",
+        "/review-manage/list",
         "/publish-manage",
         "/publish-manage/unpublished",
         "/publish-manage/published",
@@ -156,8 +156,8 @@
         "/news-manage/update/:id",
         "/news-manage/preview/:id",
         "/news-manage/draft",
-        "/audit-manage",
-        "/audit-manage/list",
+        "/review-manage",
+        "/review-manage/list",
         "/publish-manage",
         "/publish-manage/unpublished",
         "/publish-manage/published",
@@ -290,7 +290,7 @@
       "id": 22,
       "title": "Censorship",
       "rightId": 21,
-      "key": "/audit-manage/audit",
+      "key": "/review-manage/review",
       "grade": 2,
       "pagePermission": 1
     },
@@ -298,7 +298,7 @@
       "id": 23,
       "title": "Censorship List",
       "rightId": 21,
-      "key": "/audit-manage/list",
+      "key": "/review-manage/list",
       "grade": 2,
       "pagePermission": 1
     },
@@ -358,8 +358,8 @@
     },
     {
       "id": 21,
-      "title": "Audit",
-      "key": "/audit-manage",
+      "title": "Review",
+      "key": "/review-manage",
       "pagePermission": 1,
       "grade": 1
     },
@@ -371,7 +371,43 @@
       "grade": 1
     }
   ],
-  "categories": [],
+  "categories": [
+    {
+      "id": 1,
+      "title": "Current News",
+      "value": "current news"
+    },
+    {
+      "id": 2,
+      "title": "Global News",
+      "value": "global news"
+    },
+    {
+      "id": 3,
+      "title": "Science",
+      "value": "science"
+    },
+    {
+      "id": 4,
+      "title": "Technology",
+      "value": "technology"
+    },
+    {
+      "id": 5,
+      "title": "Military",
+      "value": "military"
+    },
+    {
+      "id": 6,
+      "title": "Economy",
+      "value": "economy"
+    },
+    {
+      "id": 7,
+      "title": "Sports",
+      "value": "sports"
+    }
+  ],
   "regions": [
     {
       "id": 1,

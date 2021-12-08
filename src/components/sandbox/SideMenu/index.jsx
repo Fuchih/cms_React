@@ -12,7 +12,7 @@ const iconList = {
   '/user-manage': <UserOutlined />,
   '/right-manage': <KeyOutlined />,
   '/news-manage': <FileTextOutlined />,
-  '/audit-manage': <FileSearchOutlined />,
+  '/review-manage': <FileSearchOutlined />,
   '/publish-manage': <FileDoneOutlined />
 }
 
