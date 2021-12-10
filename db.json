@@ -445,5 +445,21 @@
       "value": "Antarctica"
     }
   ],
-  "news": []
+  "news": [
+    {
+      "title": "aaa",
+      "categoryId": 2,
+      "content": "<p>aaa</p>\n",
+      "region": "Global",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 0,
+      "publishState": 0,
+      "createTime": 1639102316619,
+      "like": 0,
+      "view": 0,
+      "publishTime": 0,
+      "id": 1
+    }
+  ]
 }

@@ -44,7 +44,10 @@ export default function NewsDraft() {
     },
     {
       title: 'News Title',
-      dataIndex: 'title'
+      dataIndex: 'title',
+      render: (title, item) => {
+        return <a href={`#/news-manage/preview/${item.id}`}>{title}</a>
+      }
     },
     {
       title: 'Author',

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
 import axios from 'axios'
