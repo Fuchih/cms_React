@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const { confirm } = Modal
 
-export default function NewsDraft() {
+export default function NewsDraft(props) {
   const [dataSource, setDataSource] = useState([])
   const { username } = JSON.parse(localStorage.getItem('token'))
 
@@ -65,7 +65,7 @@ export default function NewsDraft() {
           <>
             <Button danger shape="circle" icon={<DeleteOutlined />} onClick={() => showConfirm(item)} />
             &nbsp;
-            <Button shape="circle" icon={<EditOutlined />} />
+            <Button shape="circle" icon={<EditOutlined />} onClick={() => props.history.push(`/news-manage/update/${item.id}`)} />
             &nbsp;
             <Button type="primary" shape="circle" icon={<UploadOutlined />} />
           </>

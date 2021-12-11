@@ -14,7 +14,8 @@ import Unpublished from '../../../views/NewsSandBox/publish-manage/Unpublished'
 import Published from '../../../views/NewsSandBox/publish-manage/Published'
 import Offline from '../../../views/NewsSandBox/publish-manage/Offline'
 import axios from 'axios'
-import NewsPreview from '../../../views/NewsSandBox/news-manage/NewsDraft/NewsPreview'
+import NewsPreview from '../../../views/NewsSandBox/news-manage/NewsPreview'
+import NewsUpdate from '../../../views/NewsSandBox/news-manage/NewUpdate'
 
 const LocalRouterMap = {
   '/home': Home,
@@ -24,6 +25,7 @@ const LocalRouterMap = {
   '/news-manage/add': NewsAdd,
   '/news-manage/draft': NewsDraft,
   '/news-manage/preview/:id': NewsPreview,
+  '/news-manage/update/:id': NewsUpdate,
   '/news-manage/category': NewsCategory,
   '/review-manage/review': Review,
   '/review-manage/list': ReviewList,
