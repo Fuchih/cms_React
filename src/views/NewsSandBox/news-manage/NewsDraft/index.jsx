@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Table, Button, Modal } from 'antd'
+import { Table, Button, Modal, notification } from 'antd'
 import { DeleteOutlined, EditOutlined, ExclamationCircleOutlined, UploadOutlined } from '@ant-design/icons'
 import axios from 'axios'
 
@@ -32,6 +32,22 @@ export default function NewsDraft(props) {
   function deleteMethod(item) {
     setDataSource(dataSource.filter((data) => data.id !== item.id))
     axios.delete(`/news/${item.id}`)
+  }
+
+  function handleSubmit(id) {
+    axios
+      .patch(`/news/${id}`, {
+        auditState: 1
+      })
+      .then((res) => {
+        props.history.push('/review-manage/list')
+
+        notification.info({
+          message: `Notification`,
+          description: `Waiting for censorship`,
+          placement: 'bottomRight'
+        })
+      })
   }
 
   const columns = [
@@ -67,7 +83,7 @@ export default function NewsDraft(props) {
             &nbsp;
             <Button shape="circle" icon={<EditOutlined />} onClick={() => props.history.push(`/news-manage/update/${item.id}`)} />
             &nbsp;
-            <Button type="primary" shape="circle" icon={<UploadOutlined />} />
+            <Button type="primary" shape="circle" icon={<UploadOutlined />} onClick={() => handleSubmit(item.id)} />
           </>
         )
       }
