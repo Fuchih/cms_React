@@ -4,6 +4,7 @@ import { EditorState, convertToRaw, ContentState } from 'draft-js'
 import draftToHtml from 'draftjs-to-html'
 import htmlToDraft from 'html-to-draftjs'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import './index.scss'
 
 export default function NewsEditor(props) {
   const [editorState, setEditorState] = useState('')
@@ -11,7 +12,7 @@ export default function NewsEditor(props) {
   useEffect(() => {
     const html = props.content
     if (html === undefined) return
-    
+
     const contentBlock = htmlToDraft(html)
     if (contentBlock) {
       const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks)

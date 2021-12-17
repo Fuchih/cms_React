@@ -11,7 +11,7 @@ export default function NewsAdd(props) {
   const [currentStep, setCurrentStep] = useState(0)
   const [categories, setCategories] = useState([])
   const [formInfo, setFormInfo] = useState({})
-  const [content, setContent] = useState("")
+  const [content, setContent] = useState('')
   const NewsForm = useRef(null)
 
   useEffect(() => {
@@ -37,28 +37,29 @@ export default function NewsAdd(props) {
   }
 
   function handleSave(auditState) {
-    axios.post('/news', {
-      ...formInfo,
-      "content": content,
-      "region": User.region ? User.region : "Global",
-      "author": User.username,
-      "roleId": User.roleId,
-      "auditState": auditState,
-      "publishState": 0,
-      "createTime": Date.now(),
-      "like": 0,
-      "view": 0,
-      "publishTime": 0
-    }).then(res => {
-      props.history.push(auditState === 0 ? '/news-manage/draft' : '/review-manage/list')
-
-      notification.info({
-        message: `Notification`,
-        description:
-          `${auditState === 0 ? 'Save as Draft' : 'Waiting for censorship'}`,
-          placement:'bottomRight'
+    axios
+      .post('/news', {
+        ...formInfo,
+        content: content,
+        region: User.region ? User.region : 'Global',
+        author: User.username,
+        roleId: User.roleId,
+        auditState: auditState,
+        publishState: 0,
+        createTime: Date.now(),
+        like: 0,
+        view: 0,
+        publishTime: 0
       })
-    })
+      .then((res) => {
+        props.history.push(auditState === 0 ? '/news-manage/draft' : '/review-manage/list')
+
+        notification.info({
+          message: `Notification`,
+          description: `${auditState === 0 ? 'Save as Draft' : 'Waiting for censorship'}`,
+          placement: 'bottomRight'
+        })
+      })
   }
 
   const layout = {
@@ -99,14 +100,20 @@ export default function NewsAdd(props) {
             }}
           />
         </div>
-        <div className={currentStep === 2 ? '' : style.hidden}></div>
+        <div className={currentStep === 2 ? '' : style.hidden}>
+          <div dangerouslySetInnerHTML={{ __html: content }} />
+        </div>
       </div>
 
       <div style={{ marginTop: '50px' }}>
         {currentStep === 2 && (
           <span>
-            <Button type="primary" onClick={()=>handleSave(0)}>Draft</Button>
-            <Button danger style={{marginLeft:'10px'}} onClick={()=>handleSave(1)}>Submit</Button>
+            <Button type="primary" onClick={() => handleSave(0)}>
+              Draft
+            </Button>
+            <Button danger style={{ marginLeft: '10px' }} onClick={() => handleSave(1)}>
+              Submit
+            </Button>
           </span>
         )}
         {currentStep < 2 && (
@@ -114,7 +121,11 @@ export default function NewsAdd(props) {
             Next
           </Button>
         )}
-        {currentStep > 0 && <Button onClick={handlePrevious} style={{margin:'0 10px'}}>Previous</Button>}
+        {currentStep > 0 && (
+          <Button onClick={handlePrevious} style={{ margin: '0 10px' }}>
+            Previous
+          </Button>
+        )}
       </div>
     </div>
   )

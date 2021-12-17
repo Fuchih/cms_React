@@ -12,6 +12,7 @@ export default function NewsPreview(props) {
 
   const auditList = ['Unreviewed', 'Reviewing', 'Approval', 'Disapproval']
   const publishList = ['Unpublished', 'Published', 'Online', 'Offline']
+  const colorList = ['gray', 'orange', 'green', 'red']
 
   return (
     <div>
@@ -24,10 +25,10 @@ export default function NewsPreview(props) {
               <Descriptions.Item label="Publication Time">{newsInfo.publishTime ? moment(newsInfo.createTime).format('YYYY/MM/DD HH:mm:ss') : '-'}</Descriptions.Item>
               <Descriptions.Item label="Region">{newsInfo.region}</Descriptions.Item>
               <Descriptions.Item label="Censorship">
-                <span style={{ color: 'red' }}>{auditList[newsInfo.auditState]}</span>
+                <span style={{ color: colorList[newsInfo.auditState] }}>{auditList[newsInfo.auditState]}</span>
               </Descriptions.Item>
               <Descriptions.Item label="Publication">
-                <span style={{ color: 'red' }}>{publishList[newsInfo.publishState]}</span>
+                <span style={{ color: colorList[newsInfo.publishState] }}>{publishList[newsInfo.publishState]}</span>
               </Descriptions.Item>
               <Descriptions.Item label="view">{newsInfo.view}</Descriptions.Item>
               <Descriptions.Item label="Like">{newsInfo.like}</Descriptions.Item>
