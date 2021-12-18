@@ -104,7 +104,7 @@ export default function RightList() {
 
   return (
     <>
-      <Table dataSource={dataSource} columns={columns} pagination={{ pageSize: 5 }} />
+      <Table dataSource={dataSource} columns={columns} pagination={{ pageSize: 5 }} rowKey={(item) => item.id} />
     </>
   )
 }

@@ -83,9 +83,10 @@ export default function ReviewList(props) {
   function handlePublish(item) {
     axios
       .patch(`/news/${item.id}`, {
-        "publishState": 2
+        "publishState": 2,
+        "publishTime": Date.now()
       })
-      .then((res) => {
+      .then(() => {
         props.history.push('/publish-manage/published')
 
         notification.info({

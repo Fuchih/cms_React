@@ -67,7 +67,7 @@ export default function Review(props) {
         auditState,
         publishState
       })
-      .then((res) => {
+      .then(() => {
         notification.info({
           message: `Notification`,
           description: `Review`,

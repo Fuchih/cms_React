@@ -11,7 +11,7 @@ export default function NewsPreview(props) {
   }, [props.match.params.id])
 
   const auditList = ['Unreviewed', 'Reviewing', 'Approval', 'Disapproval']
-  const publishList = ['Unpublished', 'Published', 'Online', 'Offline']
+  const publishList = ['-', 'Unpublished', 'Online', 'Offline']
   const colorList = ['gray', 'orange', 'green', 'red']
 
   return (

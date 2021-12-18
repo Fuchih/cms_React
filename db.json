@@ -380,12 +380,12 @@
     {
       "id": 2,
       "title": "Global News",
-      "value": "global news"
+      "value": "Global News"
     },
     {
       "id": 3,
       "title": "Science",
-      "value": "science"
+      "value": "Science"
     },
     {
       "id": 4,
@@ -447,64 +447,49 @@
   ],
   "news": [
     {
-      "title": "Sue",
-      "categoryId": 4,
-      "content": "<p>Sue</p>\n",
-      "region": "Asia",
-      "author": "Sue",
-      "roleId": 3,
+      "title": "TEST",
+      "categoryId": 1,
+      "content": "<p>TEST</p>\n",
+      "region": "Global",
+      "author": "admin",
+      "roleId": 1,
       "auditState": 2,
       "publishState": 1,
-      "createTime": 1639723910134,
+      "createTime": 1639839024218,
       "like": 0,
       "view": 0,
-      "publishTime": 0,
+      "publishTime": 1639840424192,
       "id": 1
     },
     {
-      "title": "Jin",
-      "categoryId": 7,
-      "content": "<p>Jin</p>\n",
-      "region": "Asia",
-      "author": "Jin",
-      "roleId": 2,
-      "auditState": 3,
-      "publishState": 0,
-      "createTime": 1639723942937,
+      "title": "TEST",
+      "categoryId": 1,
+      "content": "<p>TEST</p>\n",
+      "region": "Global",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1639839024218,
       "like": 0,
       "view": 0,
-      "publishTime": 0,
+      "publishTime": 1639840424192,
       "id": 2
     },
     {
-      "title": "22223",
-      "categoryId": 6,
-      "content": "<p>qwdwq</p>\n",
-      "region": "Asia",
-      "author": "Jin",
-      "roleId": 2,
-      "auditState": 1,
-      "publishState": 0,
-      "createTime": 1639724888553,
+      "title": "TEST",
+      "categoryId": 1,
+      "content": "<p>TEST</p>\n",
+      "region": "Global",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 3,
+      "createTime": 1639839024218,
       "like": 0,
       "view": 0,
-      "publishTime": 0,
+      "publishTime": 1639840424192,
       "id": 3
-    },
-    {
-      "title": "7777",
-      "categoryId": 4,
-      "content": "<p>7777</p>\n",
-      "region": "Asia",
-      "author": "Sue",
-      "roleId": 3,
-      "auditState": 1,
-      "publishState": 0,
-      "createTime": 1639724984745,
-      "like": 0,
-      "view": 0,
-      "publishTime": 0,
-      "id": 4
     }
   ]
 }
