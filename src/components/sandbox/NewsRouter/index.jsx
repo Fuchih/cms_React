@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Spin } from 'antd'
 import Home from '../../../views/NewsSandBox/Home'
 import UserList from '../../../views/NewsSandBox/user-manage/UserList'
 import RoleList from '../../../views/NewsSandBox/right-manage/RoleList'
@@ -34,7 +36,7 @@ const LocalRouterMap = {
   '/publish-manage/offline': Offline
 }
 
-export default function NewsRouter() {
+function NewsRouter(props) {
   const [backRouteList, setBackRouteList] = useState([])
 
   useEffect(() => {
@@ -55,15 +57,23 @@ export default function NewsRouter() {
   }
 
   return (
-    <Switch>
-      {backRouteList.map((item) => {
-        if (checkRoute(item) && checkUserPermission(item)) {
-          return <Route path={item.key} key={item.key} component={LocalRouterMap[item.key]} exact />
-        }
-        return null
-      })}
-      <Redirect from="/" to="/home" exact />
-      {backRouteList.length > 0 && <Route path="*" component={NoPermission} />}
-    </Switch>
+    <Spin size="large" spinning={props.isLoading}>
+      <Switch>
+        {backRouteList.map((item) => {
+          if (checkRoute(item) && checkUserPermission(item)) {
+            return <Route path={item.key} key={item.key} component={LocalRouterMap[item.key]} exact />
+          }
+          return null
+        })}
+        <Redirect from="/" to="/home" exact />
+        {backRouteList.length > 0 && <Route path="*" component={NoPermission} />}
+      </Switch>
+    </Spin>
   )
 }
+
+function mapStateToProps({ LoadingReducer: { isLoading } }) {
+  return { isLoading }
+}
+
+export default connect(mapStateToProps)(NewsRouter)
