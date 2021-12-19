@@ -3,7 +3,8 @@ import { withRouter } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
 import axios from 'axios'
 import { HomeOutlined, UserOutlined, KeyOutlined, FileTextOutlined, FileSearchOutlined, FileDoneOutlined } from '@ant-design/icons'
-import './index.css'
+import { connect } from 'react-redux'
+import './index.scss'
 
 const { Sider } = Layout
 const { SubMenu } = Menu
@@ -64,7 +65,7 @@ function SideMenu(props) {
   const openKeys = ['/' + props.location.pathname.split('/')[1]]
 
   return (
-    <Sider trigger={null} collapsible collapsed={false}>
+    <Sider trigger={null} collapsible collapsed={props.isCollapsed}>
       <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
         <div className="logo">News Publishing Platform</div>
         <div style={{ flex: '1', overflow: 'auto' }}>
@@ -77,4 +78,8 @@ function SideMenu(props) {
   )
 }
 
-export default withRouter(SideMenu)
+function mapStateToProps({ CollapsedReducer: { isCollapsed } }) {
+  return { isCollapsed }
+}
+
+export default connect(mapStateToProps)(withRouter(SideMenu))

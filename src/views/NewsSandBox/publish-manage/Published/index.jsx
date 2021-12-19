@@ -1,5 +1,5 @@
-import NewsPublish from '../../../../components/publish-manage/NewsPublish'
-import usePublish from '../../../../components/publish-manage/NewsPublish/usePublishing'
+import NewsPublish from '../../../../components/NewsPublish'
+import usePublish from '../../../../components/NewsPublish/usePublishing'
 import { Button } from 'antd'
 
 export default function Published() {
