@@ -2,7 +2,6 @@ import { Layout, Menu, Dropdown, Avatar } from 'antd'
 import { MenuUnfoldOutlined, MenuFoldOutlined, UserOutlined } from '@ant-design/icons'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
-import './index.scss'
 
 const { Header } = Layout
 

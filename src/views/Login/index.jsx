@@ -76,6 +76,9 @@ function Login(props) {
           <Button type="primary" htmlType="submit" className="login-form-button">
             Sign in
           </Button>
+          <Button type="default" className="login-form-button" style={{ marginLeft: '10px' }} onClick={() => props.history.push('/news')}>
+            Visitor
+          </Button>
         </Form.Item>
       </Form>
     </div>

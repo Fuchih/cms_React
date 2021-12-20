@@ -487,7 +487,7 @@
       "publishState": 2,
       "createTime": 1639839024218,
       "like": 5214,
-      "view": 52147,
+      "view": 52148,
       "publishTime": 1639840424192,
       "id": 3
     },
@@ -502,7 +502,7 @@
       "publishState": 2,
       "createTime": 1639839024218,
       "like": 1254,
-      "view": 25447,
+      "view": 25448,
       "publishTime": 1639840424192,
       "id": 4
     },
@@ -591,8 +591,8 @@
       "auditState": 2,
       "publishState": 2,
       "createTime": 1639834024218,
-      "like": 12541,
-      "view": 65147,
+      "like": 12543,
+      "view": 65149,
       "publishTime": 1639840474192,
       "id": 10
     },
@@ -636,8 +636,8 @@
       "auditState": 2,
       "publishState": 2,
       "createTime": 1639978243459,
-      "like": 0,
-      "view": 0,
+      "like": 4,
+      "view": 19,
       "publishTime": 1639978298450,
       "id": 13
     }
