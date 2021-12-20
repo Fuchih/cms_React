@@ -10,7 +10,7 @@ export default function Offline() {
       <NewsPublish
         dataSource={dataSource}
         button={(id) => (
-          <Button type="primary" onClick={() => handleDelete(id)}>
+          <Button danger onClick={() => handleDelete(id)}>
             Delete
           </Button>
         )}

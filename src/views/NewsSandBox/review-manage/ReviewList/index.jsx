@@ -47,7 +47,7 @@ export default function ReviewList(props) {
             {item.auditState === 1 && <Button onClick={() => handleWithdraw(item)}>Withdraw</Button>}
             {item.auditState === 2 && (
               <Button danger onClick={() => handlePublish(item)}>
-                Publish
+                Approval
               </Button>
             )}
             {item.auditState === 3 && (
@@ -83,15 +83,15 @@ export default function ReviewList(props) {
   function handlePublish(item) {
     axios
       .patch(`/news/${item.id}`, {
-        "publishState": 2,
-        "publishTime": Date.now()
+        publishState: 2,
+        publishTime: Date.now()
       })
       .then(() => {
         props.history.push('/publish-manage/published')
 
         notification.info({
           message: `Notification`,
-          description: `Publishing / Published`,
+          description: `Publishing / Unpublished`,
           placement: 'bottomRight'
         })
       })
