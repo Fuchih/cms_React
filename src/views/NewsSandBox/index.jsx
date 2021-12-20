@@ -1,12 +1,21 @@
+import { useEffect } from 'react'
+import NProgress from 'nprogress'
 import SideMenu from '../../components/sandbox/SideMenu'
 import TopHeader from '../../components/sandbox/TopHeader'
 import NewsRouter from '../../components/sandbox/NewsRouter'
-import './index.css'
 import { Layout } from 'antd'
+import 'nprogress/nprogress.css'
+import './index.css'
 
 const { Content } = Layout
 
 export default function NewsSandBox() {
+  NProgress.start()
+
+  useEffect(() => {
+    NProgress.done()
+  })
+  
   return (
     <Layout>
       <SideMenu></SideMenu>
@@ -21,7 +30,7 @@ export default function NewsSandBox() {
             overflow: 'auto'
           }}
         >
-          <NewsRouter/>
+          <NewsRouter />
         </Content>
       </Layout>
     </Layout>
