@@ -11,10 +11,10 @@ export default function RightList() {
   useEffect(() => {
     axios.get('/rights?_embed=children').then((res) => {
       const list = res.data
-      list.forEach((item) => {
+      list.forEach((item) =>
         // 判斷子層級是否有數據
-        if (item.children.length === 0) item.children = ''
-      })
+        item.children?.length === 0 ? (item.children = '') : item.children
+      )
       setDataSource(list)
     })
   }, [])
