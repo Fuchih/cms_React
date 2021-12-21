@@ -3,7 +3,7 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "https://&lt;YourAppName&gt;.herokuapp.com/api/:splat"
+  to = "https://cms-react-project.herokuapp.com/api/:splat"
   status = 200
 
 [[redirects]]
