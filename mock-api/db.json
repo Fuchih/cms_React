@@ -1,0 +1,645 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": 123456,
+      "roleState": true,
+      "default": true,
+      "region": "",
+      "roleId": 1
+    },
+    {
+      "id": 2,
+      "username": "Jin",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "Asia",
+      "roleId": 2
+    },
+    {
+      "id": 3,
+      "username": "Tom",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "European",
+      "roleId": 2
+    },
+    {
+      "id": 4,
+      "username": "Mary",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "",
+      "roleId": 1
+    },
+    {
+      "id": 5,
+      "username": "Morrison",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "Oceania",
+      "roleId": 3
+    },
+    {
+      "id": 6,
+      "username": "Liz",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "Africa",
+      "roleId": 3
+    },
+    {
+      "id": 7,
+      "username": "Ivy",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "North America",
+      "roleId": 3
+    },
+    {
+      "id": 8,
+      "username": "Karen",
+      "password": 123456,
+      "roleState": true,
+      "default": false,
+      "region": "Antarctica",
+      "roleId": 3
+    },
+    {
+      "username": "Sue",
+      "password": "123456",
+      "region": "Asia",
+      "roleId": 3,
+      "roleState": true,
+      "default": false,
+      "id": 9
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "roleName": "Administrator",
+      "roleType": 1,
+      "rights": [
+        "/user-manage",
+        "/user-manage/add",
+        "/user-manage/delete",
+        "/user-manage/update",
+        "/user-manage/list",
+        "/right-manage",
+        "/right-manage/role/list",
+        "/right-manage/right/list",
+        "/right-manage/role/update",
+        "/right-manage/role/delete",
+        "/right-manage/right/update",
+        "/right-manage/right/delete",
+        "/news-manage",
+        "/news-manage/list",
+        "/news-manage/add",
+        "/news-manage/update/:id",
+        "/news-manage/preview/:id",
+        "/news-manage/draft",
+        "/news-manage/category",
+        "/review-manage",
+        "/review-manage/review",
+        "/review-manage/list",
+        "/publish-manage",
+        "/publish-manage/unpublished",
+        "/publish-manage/published",
+        "/publish-manage/offline",
+        "/home"
+      ]
+    },
+    {
+      "id": 2,
+      "roleName": "Editor",
+      "roleType": 2,
+      "rights": [
+        "/home",
+        "/user-manage",
+        "/user-manage/add",
+        "/user-manage/delete",
+        "/user-manage/update",
+        "/user-manage/list",
+        "/news-manage",
+        "/news-manage/list",
+        "/news-manage/add",
+        "/news-manage/update/:id",
+        "/news-manage/preview/:id",
+        "/news-manage/draft",
+        "/news-manage/category",
+        "/review-manage",
+        "/review-manage/review",
+        "/review-manage/list",
+        "/publish-manage",
+        "/publish-manage/unpublished",
+        "/publish-manage/published",
+        "/publish-manage/offline"
+      ]
+    },
+    {
+      "id": 3,
+      "roleName": "Subeditor",
+      "roleType": 3,
+      "rights": [
+        "/home",
+        "/news-manage",
+        "/news-manage/list",
+        "/news-manage/add",
+        "/news-manage/update/:id",
+        "/news-manage/preview/:id",
+        "/news-manage/draft",
+        "/review-manage",
+        "/review-manage/list",
+        "/publish-manage",
+        "/publish-manage/unpublished",
+        "/publish-manage/published",
+        "/publish-manage/offline"
+      ]
+    }
+  ],
+  "children": [
+    {
+      "id": 3,
+      "title": "Add Users",
+      "rightId": 2,
+      "key": "/user-manage/add",
+      "grade": 2
+    },
+    {
+      "id": 4,
+      "title": "Delete Users",
+      "rightId": 2,
+      "key": "/user-manage/delete",
+      "grade": 2
+    },
+    {
+      "id": 5,
+      "title": "Update Users",
+      "rightId": 2,
+      "key": "/user-manage/update",
+      "grade": 2
+    },
+    {
+      "id": 6,
+      "title": "User List",
+      "rightId": 2,
+      "key": "/user-manage/list",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 8,
+      "title": "Role List",
+      "rightId": 7,
+      "key": "/right-manage/role/list",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 9,
+      "title": "Auth List",
+      "rightId": 7,
+      "key": "/right-manage/right/list",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 10,
+      "title": "Update Role",
+      "rightId": 7,
+      "key": "/right-manage/role/update",
+      "grade": 2
+    },
+    {
+      "id": 11,
+      "title": "Delete Role",
+      "rightId": 7,
+      "key": "/right-manage/role/delete",
+      "grade": 2
+    },
+    {
+      "id": 12,
+      "title": "Update Auth",
+      "rightId": 7,
+      "key": "/right-manage/right/update",
+      "grade": 2
+    },
+    {
+      "id": 13,
+      "title": "Delete Auth",
+      "rightId": 7,
+      "key": "/right-manage/right/delete",
+      "grade": 2
+    },
+    {
+      "id": 15,
+      "title": "News List",
+      "rightId": 14,
+      "key": "/news-manage/list",
+      "grade": 2
+    },
+    {
+      "id": 16,
+      "title": "Write News",
+      "rightId": 14,
+      "key": "/news-manage/add",
+      "pagePermission": 1,
+      "grade": 2
+    },
+    {
+      "id": 17,
+      "title": "Update News",
+      "rightId": 14,
+      "key": "/news-manage/update/:id",
+      "grade": 2,
+      "routePermission": 1
+    },
+    {
+      "id": 18,
+      "title": "News Preview",
+      "rightId": 14,
+      "key": "/news-manage/preview/:id",
+      "grade": 2,
+      "routePermission": 1
+    },
+    {
+      "id": 19,
+      "title": "Draft Box",
+      "rightId": 14,
+      "key": "/news-manage/draft",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 20,
+      "title": "News Categories",
+      "rightId": 14,
+      "key": "/news-manage/category",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 22,
+      "title": "Censorship",
+      "rightId": 21,
+      "key": "/review-manage/review",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 23,
+      "title": "Censorship List",
+      "rightId": 21,
+      "key": "/review-manage/list",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 25,
+      "title": "Unpublished",
+      "rightId": 24,
+      "key": "/publish-manage/unpublished",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 26,
+      "title": "Published",
+      "rightId": 24,
+      "key": "/publish-manage/published",
+      "grade": 2,
+      "pagePermission": 1
+    },
+    {
+      "id": 27,
+      "title": "Offline",
+      "rightId": 24,
+      "key": "/publish-manage/offline",
+      "grade": 2,
+      "pagePermission": 1
+    }
+  ],
+  "rights": [
+    {
+      "id": 1,
+      "title": "Home",
+      "key": "/home",
+      "pagePermission": 1,
+      "grade": 1
+    },
+    {
+      "id": 2,
+      "title": "User",
+      "key": "/user-manage",
+      "pagePermission": 1,
+      "grade": 1
+    },
+    {
+      "id": 7,
+      "title": "Authority",
+      "key": "/right-manage",
+      "pagePermission": 1,
+      "grade": 1
+    },
+    {
+      "id": 14,
+      "title": "News",
+      "key": "/news-manage",
+      "pagePermission": 1,
+      "grade": 1
+    },
+    {
+      "id": 21,
+      "title": "Review",
+      "key": "/review-manage",
+      "pagePermission": 1,
+      "grade": 1
+    },
+    {
+      "id": 24,
+      "title": "Publishing",
+      "key": "/publish-manage",
+      "pagePermission": 1,
+      "grade": 1
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "title": "Current News",
+      "value": "Current News"
+    },
+    {
+      "id": 2,
+      "title": "Global News",
+      "value": "Global News"
+    },
+    {
+      "id": 3,
+      "title": "Science",
+      "value": "Science"
+    },
+    {
+      "id": 4,
+      "title": "Technology",
+      "value": "technology"
+    },
+    {
+      "id": 5,
+      "title": "Military",
+      "value": "Military"
+    },
+    {
+      "id": 6,
+      "title": "Economy",
+      "value": "economy"
+    },
+    {
+      "id": 7,
+      "title": "Sports",
+      "value": "sports"
+    }
+  ],
+  "regions": [
+    {
+      "id": 1,
+      "title": "Asia",
+      "value": "Asia"
+    },
+    {
+      "id": 2,
+      "title": "European",
+      "value": "European"
+    },
+    {
+      "id": 3,
+      "title": "North America",
+      "value": "North America"
+    },
+    {
+      "id": 4,
+      "title": "South America",
+      "value": "South America"
+    },
+    {
+      "id": 5,
+      "title": "Africa",
+      "value": "Africa"
+    },
+    {
+      "id": 6,
+      "title": "Oceania",
+      "value": "Oceania"
+    },
+    {
+      "id": 7,
+      "title": "Antarctica",
+      "value": "Antarctica"
+    }
+  ],
+  "news": [
+    {
+      "title": "TEST",
+      "categoryId": 1,
+      "content": "<p>TEST</p>\n",
+      "region": "Global",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 1,
+      "createTime": 1639839024218,
+      "like": 0,
+      "view": 0,
+      "publishTime": 1639840424192,
+      "id": 1
+    },
+    {
+      "title": "送友人",
+      "categoryId": 2,
+      "content": "<p>青山橫北郭，白水繞東城。此地一為別，孤蓬萬里征。浮雲遊子意，落日故人情。揮手自茲去，蕭蕭班馬鳴。</p>\n",
+      "region": "Global",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1639839024218,
+      "like": 5584,
+      "view": 12548,
+      "publishTime": 1639840424192,
+      "id": 2
+    },
+    {
+      "title": "賦得古原草送別",
+      "categoryId": 2,
+      "content": "<p>離離原上草，一歲一枯榮。野火燒不盡，春風吹又生。遠芳侵古道，晴翠接荒城。又送王孫去，萋萋滿別情。</p>\n",
+      "region": "Global",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1639839024218,
+      "like": 5214,
+      "view": 52148,
+      "publishTime": 1639840424192,
+      "id": 3
+    },
+    {
+      "title": "春望",
+      "categoryId": 3,
+      "content": "<p>國破山河在，城春草木深。感時花濺淚，恨別鳥驚心。烽火連三月，家書抵萬金。白頭搔更短，渾欲不勝簪。</p>",
+      "region": "Global",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1639839024218,
+      "like": 1254,
+      "view": 25448,
+      "publishTime": 1639840424192,
+      "id": 4
+    },
+    {
+      "title": "望月懷遠",
+      "categoryId": 2,
+      "content": "<p>海上生明月，天涯共此時。情人怨遙夜，竟夕起相思。滅燭憐光滿，披衣覺露滋。不堪盈手贈，還寢夢佳期。</p>",
+      "region": "Global",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1639839024218,
+      "like": 1254,
+      "view": 25447,
+      "publishTime": 1639840424192,
+      "id": 5
+    },
+    {
+      "title": "渡荊門送別",
+      "categoryId": 4,
+      "content": "<p>渡遠荊門外，來從楚國游。山隨平野盡，江入大荒流。月下飛天鏡，雲生結海樓。仍憐故鄉水，萬里送行舟。</p>",
+      "region": "Global",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1639839024218,
+      "like": 124,
+      "view": 15447,
+      "publishTime": 1639840424192,
+      "id": 6
+    },
+    {
+      "title": "歸園田居·其三",
+      "categoryId": 5,
+      "content": "<p>種豆南山下，草盛豆苗稀。晨興理荒穢，帶月荷鋤歸。道狹草木長，夕露沾我衣。衣沾不足惜，但使願無違。</p>",
+      "region": "Global",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1639835024218,
+      "like": 12254,
+      "view": 255447,
+      "publishTime": 1639840424192,
+      "id": 7
+    },
+    {
+      "title": "野望",
+      "categoryId": 6,
+      "content": "<p>東皋薄暮望，徙倚欲何依。樹樹皆秋色，山山唯落暉。牧人驅犢返，獵馬帶禽歸。相顧無相識，長歌懷採薇。</p>",
+      "region": "Global",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1635839024218,
+      "like": 54,
+      "view": 447,
+      "publishTime": 1637840424192,
+      "id": 8
+    },
+    {
+      "title": "從軍行",
+      "categoryId": 7,
+      "content": "<p>烽火照西京，心中自不平。牙璋辭鳳闕，鐵騎繞龍城。雪暗凋旗畫，風多雜鼓聲。寧為百夫長，勝作一書生。</p>",
+      "region": "Global",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1639839054218,
+      "like": 124,
+      "view": 7447,
+      "publishTime": 1639840724192,
+      "id": 9
+    },
+    {
+      "title": "送杜少府之任蜀州",
+      "categoryId": 6,
+      "content": "<p>城闕輔三秦，風煙望五津。與君離別意，同是宦遊人。海內存知己，天涯若比鄰。無為在歧路，兒女共沾巾。</p>",
+      "region": "Global",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1639834024218,
+      "like": 12543,
+      "view": 65149,
+      "publishTime": 1639840474192,
+      "id": 10
+    },
+    {
+      "title": "淮上喜會梁川故人",
+      "categoryId": 5,
+      "content": "<p>江漢曾為客，相逢每醉還。浮雲一別後，流水十年間。歡笑情如舊，蕭疏鬢已斑。何因不歸去？淮上有秋山。</p>",
+      "region": "Global",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1639835024218,
+      "like": 4,
+      "view": 47,
+      "publishTime": 1639840224192,
+      "id": 11
+    },
+    {
+      "title": "TEST",
+      "categoryId": 4,
+      "content": "<p>TEST</p>\n",
+      "region": "Global",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 3,
+      "createTime": 1639839024218,
+      "like": 0,
+      "view": 0,
+      "publishTime": 1639840424192,
+      "id": 12
+    },
+    {
+      "title": "望岳",
+      "categoryId": 5,
+      "content": "<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);background-color: rgb(247,247,247);font-size: 14px;font-family: Open Sans\", Helvetica, Arial, sans-serif;\">岱宗夫如何？齊魯青未了。</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);background-color: rgb(247,247,247);font-size: 14px;font-family: Open Sans\", Helvetica, Arial, sans-serif;\">造化鍾神秀，陰陽割昏曉。</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);background-color: rgb(247,247,247);font-size: 14px;font-family: Open Sans\", Helvetica, Arial, sans-serif;\">盪胸生曾雲，決眥入歸鳥。</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);background-color: rgb(247,247,247);font-size: 14px;font-family: Open Sans\", Helvetica, Arial, sans-serif;\"><strong>會當凌絕頂，一覽眾山小。</strong></span><br></p>\n",
+      "region": "Asia",
+      "author": "Sue",
+      "roleId": 3,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1639978243459,
+      "like": 4,
+      "view": 19,
+      "publishTime": 1639978298450,
+      "id": 13
+    }
+  ]
+}
